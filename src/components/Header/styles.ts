@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 2rem 0;
 
@@ -13,7 +13,6 @@ export const HeaderContainer = styled.header`
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding: 0;
     gap: 0.75rem;
 
     a {
@@ -22,7 +21,6 @@ export const HeaderContainer = styled.header`
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding: 0.5rem;
       gap: 0.25rem;
 
       width: 2.375rem;
@@ -32,14 +30,51 @@ export const HeaderContainer = styled.header`
       border-radius: 6px;
       color: ${(props) => props.theme['yellow-dark']};
 
-      transition: all 0.3s;
+      span {
+        position: absolute;
+        margin-bottom: 2rem;
+        margin-left: 1.5rem;
+
+        width: 1.25rem;
+        height: 1.25rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 0.75rem;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+
+        padding: 0.3rem;
+        border-radius: 1000px;
+
+        color: ${(props) => props.theme.white};
+        background-color: ${(props) => props.theme['yellow-dark']};
+      }
 
       &:hover {
         background: ${(props) => props.theme.purple};
         color: ${(props) => props.theme.white};
+        transition: all 0.3s;
+        span {
+          background-color: ${(props) => props.theme['purple-dark']};
+          transition: all 0.3s;
+        }
       }
     }
   }
+`
+
+export const HeaderContent = styled.div`
+  max-width: 69.875rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `
 
 export const LocaleContainer = styled.div`

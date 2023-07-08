@@ -118,5 +118,5 @@ export const CoffesContent = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1.7rem;
 `

@@ -24,5 +24,20 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: 1rem;
   }
+
+  input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+  }
+  input[type=number] { 
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    -moz-appearance: textfield;
+    appearance: textfield;
+
+  }
+
   
 `

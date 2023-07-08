@@ -1,8 +1,13 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import deliveryManImage from '../../assets/delivery-man.svg'
 import { Item, ItemContainer, SuccessContainer, SuccessContent } from './styles'
+import { useContext } from 'react'
+import { CartCoffesContext } from '../../context/CartCoffesContext'
 
 export function Success() {
+  const { addressPurchese } = useContext(CartCoffesContext)
+
+  console.log(addressPurchese)
   return (
     <SuccessContainer>
       <SuccessContent>
@@ -16,9 +21,10 @@ export function Success() {
             </Item>
             <div>
               <span>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>{`${addressPurchese?.road}, ${addressPurchese?.number}`}</strong>
               </span>
-              <span>Farrapos - Porto Alegre, RS</span>
+              <span>{`${addressPurchese?.district} - ${addressPurchese?.city}, ${addressPurchese?.uf}`}</span>
             </div>
           </ItemContainer>
           <ItemContainer>
@@ -36,7 +42,13 @@ export function Success() {
             </Item>
             <div>
               <span>Pagamento na entrega</span>
-              <strong>Cartão de Crédito</strong>
+              <strong>
+                {addressPurchese?.type === 'credit'
+                  ? 'Crédito'
+                  : addressPurchese?.type === 'debit'
+                  ? 'Débito'
+                  : 'Dinheiro'}
+              </strong>
             </div>
           </ItemContainer>
         </main>

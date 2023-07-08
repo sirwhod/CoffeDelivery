@@ -24,15 +24,32 @@ export interface Coffe {
   price: number
 }
 
-interface CoffeOnCart {
+export interface CoffeOnCart {
   coffe: Coffe
   quantityOnCart: number
   onCart: boolean
 }
 
+export interface addressPurchese {
+  cep: number
+  road: string
+  number: number
+  complement: string
+  district: string
+  city: string
+  uf: string
+  type: 'credit' | 'debit' | 'money'
+}
+
 interface CartCoffesContextType {
   coffes: Coffe[]
   coffesOnCart: CoffeOnCart[]
+  addressPurchese: addressPurchese | undefined
+  addCoffesOnCart: (newCoffe: CoffeOnCart) => void
+  removeCoffeOfCart: (id: string) => void
+  removeQuantityCoffe: (id: string) => void
+  addQuantityCoffe: (id: string) => void
+  sendAddress: (data: addressPurchese) => void
 }
 
 interface CartCoffesContextProviderProps {
@@ -46,6 +63,7 @@ export function CartCoffesContextProvider({
 }: CartCoffesContextProviderProps) {
   const [coffes, setCoffes] = useState<Coffe[]>([])
   const [coffesOnCart, setCoffesOnCart] = useState<CoffeOnCart[]>([])
+  const [addressPurchese, setAddressPurchese] = useState<addressPurchese>()
 
   useEffect(() => {
     const coffesList = [
@@ -173,8 +191,62 @@ export function CartCoffesContextProvider({
     setCoffes(coffesList)
   }, [])
 
+  function addCoffesOnCart(newCoffe: CoffeOnCart) {
+    setCoffesOnCart((state) => [newCoffe, ...state])
+  }
+
+  function removeQuantityCoffe(id: string) {
+    setCoffesOnCart((coffesOnCart: CoffeOnCart[]) => {
+      return coffesOnCart.map((coffeOnCart) => {
+        if (coffeOnCart.coffe.id === id) {
+          return {
+            ...coffeOnCart,
+            quantityOnCart: coffeOnCart.quantityOnCart - 1,
+          }
+        }
+        return coffeOnCart
+      })
+    })
+  }
+
+  function addQuantityCoffe(id: string) {
+    setCoffesOnCart((coffesOnCart: CoffeOnCart[]) => {
+      return coffesOnCart.map((coffeOnCart) => {
+        if (coffeOnCart.coffe.id === id) {
+          return {
+            ...coffeOnCart,
+            quantityOnCart: coffeOnCart.quantityOnCart + 1,
+          }
+        }
+        return coffeOnCart
+      })
+    })
+  }
+
+  function removeCoffeOfCart(id: string) {
+    setCoffesOnCart((coffesOnCart: CoffeOnCart[]) => {
+      return coffesOnCart.filter((coffeOnCart) => coffeOnCart.coffe.id !== id)
+    })
+  }
+
+  function sendAddress(data: addressPurchese) {
+    setAddressPurchese(data)
+    setCoffesOnCart([])
+  }
+
   return (
-    <CartCoffesContext.Provider value={{ coffes, coffesOnCart }}>
+    <CartCoffesContext.Provider
+      value={{
+        coffes,
+        coffesOnCart,
+        addressPurchese,
+        addCoffesOnCart,
+        removeCoffeOfCart,
+        removeQuantityCoffe,
+        addQuantityCoffe,
+        sendAddress,
+      }}
+    >
       {children}
     </CartCoffesContext.Provider>
   )

@@ -1,14 +1,17 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 
 import { CardCoffe, InputCoffe, TypeCoffe } from './styles'
-import { useState } from 'react'
-import { Coffe } from '../../../../context/CartCoffesContext'
+import { useState, useContext } from 'react'
+import { CartCoffesContext, Coffe } from '../../../../context/CartCoffesContext'
+import { priceFormatterNumber } from '../../../../utils/formatter'
 
 interface CardCoffeProps {
   coffe: Coffe
 }
 
 export function CardCoffes({ coffe }: CardCoffeProps) {
+  const { addCoffesOnCart } = useContext(CartCoffesContext)
+
   const { image, name, type, description, price } = coffe
 
   const [quantity, setQuantity] = useState(0)
@@ -35,6 +38,18 @@ export function CardCoffes({ coffe }: CardCoffeProps) {
     setQuantity(newValueQuantity)
   }
 
+  function handleSubmit(event: { preventDefault: () => void }) {
+    event.preventDefault()
+
+    const NewCoffe = {
+      coffe,
+      quantityOnCart: quantity,
+      onCart: true,
+    }
+
+    addCoffesOnCart(NewCoffe)
+  }
+
   return (
     <CardCoffe>
       <img src={image} alt="" />
@@ -48,9 +63,9 @@ export function CardCoffes({ coffe }: CardCoffeProps) {
       <p>{description}</p>
       <footer>
         <p>
-          R$ <strong>{price}</strong>
+          R$ <strong>{priceFormatterNumber(price)}</strong>
         </p>
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <InputCoffe>
             <button onClick={handlePlus}>
               <Plus weight="bold" size={14} />

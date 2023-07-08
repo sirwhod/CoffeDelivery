@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const CardCoffe = styled.div`
+  max-width: 16rem;
   display: flex;
   justify-content: center;
   align-items: center;
