@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const CardCoffe = styled.div`
   max-width: 16rem;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,8 +110,10 @@ export const CardCoffe = styled.div`
 export const TypeCoffe = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 0.25rem;
 
   span {
     display: flex;

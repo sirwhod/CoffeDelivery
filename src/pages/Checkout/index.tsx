@@ -26,16 +26,16 @@ import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useSummary } from '../../hooks/useSummary'
 import { priceFormatter } from '../../utils/formatter'
-import { redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 const newCheckoutSchema = z.object({
   cep: z.number(),
-  road: z.string(),
+  road: z.string().nonempty('Por favor preencha com o nome de sua rua!'),
   number: z.number(),
   complement: z.string(),
-  district: z.string(),
-  city: z.string(),
-  uf: z.string(),
+  district: z.string().nonempty('Por favor preencha com o bairro de sua rua!'),
+  city: z.string().nonempty('Por favor preencha com a cidade de sua casa!'),
+  uf: z.string().nonempty('Por favor preencha com o UF de sua cidade!'),
   type: z.enum(['credit', 'debit', 'money']),
 })
 
@@ -50,18 +50,24 @@ export function Checkout() {
     control,
     register,
     handleSubmit,
-    formState: { isSubmitting, errors },
+    formState: { isSubmitting, isSubmitSuccessful, errors },
   } = useForm<newCheckoutFormInputs>({
     resolver: zodResolver(newCheckoutSchema),
   })
+
+  console.log(errors)
 
   function handleNewCheckout(data: newCheckoutFormInputs) {
     sendAddress(data)
   }
 
+  if (isSubmitSuccessful) {
+    return <Navigate to="/success" />
+  }
+
   return (
     <CheckoutComponent>
-      <form onSubmit={handleSubmit(handleNewCheckout)} action="/success">
+      <form onSubmit={handleSubmit(handleNewCheckout)}>
         <CompleteRegistration>
           <h1>Complete seu pedido</h1>
           <FormAddress>
@@ -83,6 +89,7 @@ export function Checkout() {
                 minLength={8}
                 {...register('cep', { valueAsNumber: true })}
               />
+              {errors.cep && <span>{errors.cep.message}</span>}
               <FormInput
                 inputType="RUA"
                 type="text"
@@ -90,6 +97,7 @@ export function Checkout() {
                 placeholder="Rua"
                 {...register('road')}
               />
+              {errors.road && <span>{errors.road.message}</span>}
               <FormInput
                 inputType="Numero"
                 type="number"
@@ -97,6 +105,7 @@ export function Checkout() {
                 placeholder="Número"
                 {...register('number', { valueAsNumber: true })}
               />
+              {errors.number && <span>{errors.number.message}</span>}
               <FormInput
                 inputType="Complemento"
                 type="text"
@@ -104,6 +113,7 @@ export function Checkout() {
                 placeholder="Complemento"
                 {...register('complement')}
               />
+              {errors.complement && <span>{errors.complement.message}</span>}
               <FormInput
                 inputType="Bairro"
                 type="text"
@@ -111,6 +121,7 @@ export function Checkout() {
                 placeholder="Bairro"
                 {...register('district')}
               />
+              {errors.district && <span>{errors.district.message}</span>}
               <FormInput
                 inputType="Cidade"
                 type="text"
@@ -118,6 +129,7 @@ export function Checkout() {
                 placeholder="Cidade"
                 {...register('city')}
               />
+              {errors.city && <span>{errors.city.message}</span>}
               <FormInput
                 inputType="UF"
                 type="text"
@@ -125,6 +137,7 @@ export function Checkout() {
                 placeholder="UF"
                 {...register('uf')}
               />
+              {errors.uf && <span>{errors.uf.message}</span>}
             </main>
           </FormAddress>
 
@@ -168,6 +181,7 @@ export function Checkout() {
                   )
                 }}
               />
+              {errors.type && <span>{errors.type.message}</span>}
             </main>
           </FormPayment>
         </CompleteRegistration>

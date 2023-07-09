@@ -57,7 +57,6 @@ export function CardCoffes({ coffe }: CardCoffeProps) {
         {type.map((type) => {
           return <span key={type}>{type}</span>
         })}
-        <span>Tradicional</span>
       </TypeCoffe>
       <strong>{name}</strong>
       <p>{description}</p>
