@@ -75,6 +75,14 @@ export const HeaderContent = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  a {
+    width: 80px;
+
+    img {
+      width: 100%;
+    }
+  }
 `
 
 export const LocaleContainer = styled.div`

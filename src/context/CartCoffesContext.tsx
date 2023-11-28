@@ -1,19 +1,16 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
 
-import coffeImage1 from '../assets/coffes/Image.png'
-import coffeImage2 from '../assets/coffes/Image-1.png'
-import coffeImage3 from '../assets/coffes/Image-2.png'
-import coffeImage4 from '../assets/coffes/Image-3.png'
-import coffeImage5 from '../assets/coffes/Image-4.png'
-import coffeImage6 from '../assets/coffes/Image-5.png'
-import coffeImage7 from '../assets/coffes/Image-6.png'
-import coffeImage8 from '../assets/coffes/Image-7.png'
-import coffeImage9 from '../assets/coffes/Image-8.png'
-import coffeImage10 from '../assets/coffes/Image-9.png'
-import coffeImage11 from '../assets/coffes/Image-10.png'
-import coffeImage12 from '../assets/coffes/Image-11.png'
-import coffeImage13 from '../assets/coffes/Image-12.png'
-import coffeImage14 from '../assets/coffes/Image-13.png'
+import artesanalHamburguer from '../assets/food/artesanal-hamburguer.png'
+import artesanalHamburguerComplet from '../assets/food/artesanal-hamburguer-complet.png'
+import artesanalHamburguerWithBacon from '../assets/food/artesanal-hamburguer-with-bacon.png'
+import pizzaCalabresa from '../assets/food/calabresa.png'
+import pizzaChickenWithCatupiry from '../assets/food/frango-com-catupiry.png'
+import pizzaMussarela from '../assets/food/MILHO-VERDE-COM-MUCARELA-OU-CATUPIRY-MILHO-VERDE-COBERTA-COM-MUCARELA-OU-CATUPIRY-2048x1957.webp'
+import chickenStrogonoff from '../assets/food/chicken-stroganoff-rice-potato-straw-png.png'
+import penneBolognese from '../assets/food/penne-bolognese-with-parmesan-cheese-png.png'
+import penneWithWhiteSauce from '../assets/food/penne-with-white-sauce-png.png'
+import pratoFeito from '../assets/food/pratocontrahome.png'
+import crazyPotato from '../assets/food/crazy-potato.jpg'
 
 export interface Coffe {
   id: string
@@ -69,122 +66,94 @@ export function CartCoffesContextProvider({
     const coffesList = [
       {
         id: 'asidghasiudghasiudasdas',
-        image: coffeImage1,
-        type: ['Tradicional'],
-        name: 'Expresso Tradicional',
-        description: 'O tradicional café feito com água quente e grãos moídos',
+        image: artesanalHamburguer,
+        type: ['Hamburguer'],
+        name: 'Hamburguer Artesanal',
+        description: 'O Hamburguer Artesanal mais gostoso da cidade!',
         price: 9.9,
       },
       {
-        id: 'asidghasiudghasiudasd',
-        image: coffeImage2,
-        type: ['Tradicional'],
-        name: 'Expresso Americano',
-        description: 'Expresso diluído, menos intenso que o tradicional',
-        price: 9.9,
-      },
-      {
-        id: 'asidghasiudghasiudafasv',
-        image: coffeImage3,
-        type: ['Tradicional'],
-        name: 'Expresso Cremoso',
-        description: 'Café expresso tradicional com espuma cremosa',
-        price: 9.9,
-      },
-      {
-        id: 'asidghasiudghasiudvasfas',
-        image: coffeImage4,
-        type: ['Tradicional', 'Gelado'],
-        name: 'Expresso Gelado',
-        description: 'Bebida preparada com café expresso e cubos de gelo',
-        price: 9.9,
-      },
-      {
-        id: 'asidghasiudghasiudasfaw',
-        image: coffeImage5,
-        type: ['Tradicional', 'Com Leite'],
-        name: 'Café com Leite',
-        description: 'Meio a meio de expresso tradicional com leite vaporizado',
-        price: 9.9,
-      },
-      {
-        id: 'asidghasiudghasiudawdaw',
-        image: coffeImage6,
-        type: ['Tradicional', 'Com leite'],
-        name: 'Latte',
+        id: 'asidghasiudghasiudasdasds',
+        image: artesanalHamburguerComplet,
+        type: ['Hamburguer'],
+        name: 'Hamburguer Artesanal Completo',
         description:
-          'Uma dose de café expresso com o dobro de leite e espuma cremosa',
-        price: 9.9,
+          'O Hamburguer Artesanal que você já conhece, mas agora completo!',
+        price: 19.9,
       },
       {
-        id: 'asidghasiudghasiudwffq',
-        image: coffeImage7,
-        type: ['Tradicional', 'Com Leite'],
-        name: 'Capuccino',
+        id: 'asidghasiudghasiudasdasasdas',
+        image: artesanalHamburguerWithBacon,
+        type: ['Hamburguer'],
+        name: 'Hamburguer Artesanal com Bacon',
+        description: 'O Hamburguer Artesanal para os amantes de bacon!',
+        price: 29.9,
+      },
+      {
+        id: 'asidghasiudghasiudaasdasdsdas',
+        image: pizzaCalabresa,
+        type: ['Pizza'],
+        name: 'Pizza de Calabresa',
+        description: 'Se delicie com a melhor pizza de calabresa da cidade!',
+        price: 49.9,
+      },
+      {
+        id: 'asidghasiudghasiudaasasdasdsdasdsdas',
+        image: pizzaChickenWithCatupiry,
+        type: ['Pizza'],
+        name: 'Pizza de frango com Catupiry',
         description:
-          'Bebida com canela feita de doses iguais de café, leite e espuma',
-        price: 9.9,
+          'Se delicie com a melhor pizza de frango com Catupiry da cidade!',
+        price: 49.9,
       },
       {
-        id: 'asidghasiudghasiudqwfqwf',
-        image: coffeImage8,
-        type: ['Tradicional', 'com leite'],
-        name: 'Macchiato',
+        id: 'asidghasiudasdasghasiudaasdasdsdas',
+        image: pizzaMussarela,
+        type: ['Pizza'],
+        name: 'Pizza de Mussarela',
+        description: 'Se delicie com a melhor pizza de Mussarela da cidade!',
+        price: 49.9,
+      },
+      {
+        id: 'asidghasiudasdasghasiudaasdasdsdas',
+        image: chickenStrogonoff,
+        type: ['Prato feito'],
+        name: 'Strogonoff de frango',
+        description: 'Se delicie com o melhor Strogonoff de frango da cidade!',
+        price: 12.9,
+      },
+      {
+        id: 'asidghasiudasdasghasiudaasdasasdasdsdas',
+        image: penneBolognese,
+        type: ['Prato feito'],
+        name: 'Macarrão a Bolanhesa',
+        description: 'Se delicie com o melhor Macarrão a Bolanhesa da cidade!',
+        price: 19.9,
+      },
+      {
+        id: 'asidghasiudasdasghasiudasdasdaasdasdsdas',
+        image: penneWithWhiteSauce,
+        type: ['Prato feito'],
+        name: 'Macarrão ao Molho branco',
         description:
-          'Café expresso misturado com um pouco de leite quente e espuma',
-        price: 9.9,
+          'Se delicie com o melhor Macarrão ao Molho branco da cidade!',
+        price: 19.9,
       },
       {
-        id: 'asidghasiudghasiudfwqwfqwgv',
-        image: coffeImage9,
-        type: ['Tradicional', 'Com Leite'],
-        name: 'Mocaccino',
-        description:
-          'Café expresso com calda de chocolate, pouco leite e espuma',
-        price: 9.9,
+        id: 'asidghasiudasdasghasiudaasdaasdfassdsdas',
+        image: pratoFeito,
+        type: ['Prato feito'],
+        name: 'Prato feito',
+        description: 'Se delicie com o melhor Prato feito da cidade!',
+        price: 24.9,
       },
       {
-        id: 'asidghasiudghasiudqwfvqfgqw',
-        image: coffeImage10,
-        type: ['Especial', 'Com Leite'],
-        name: 'Chocolate Quente',
-        description:
-          'Bebida feita com chocolate dissolvido no leite quente e café',
-        price: 9.9,
-      },
-      {
-        id: 'asidghasiudghasiudcqwfqwfqw',
-        image: coffeImage11,
-        type: ['Especial', 'Alcoólico', 'Gelado'],
-        name: 'Cubano',
-        description:
-          'Drink gelado de café expresso com rum, creme de leite e hortelã',
-        price: 9.9,
-      },
-      {
-        id: 'asidghasiudghasiudfqwfqwf',
-        image: coffeImage12,
-        type: ['Especial'],
-        name: 'Havaiano',
-        description: 'Bebida adocicada preparada com café e leite de coco',
-        price: 9.9,
-      },
-      {
-        id: 'asidghasiudghasiudqwfqwfqw',
-        image: coffeImage13,
-        type: ['Especial'],
-        name: 'Árabe',
-        description: 'Bebida preparada com grãos de café árabe e especiarias',
-        price: 9.9,
-      },
-      {
-        id: 'asidghasiudghasiudfqwfqw',
-        image: coffeImage14,
-        type: ['Especial', 'Alcoólico'],
-        name: 'Irlandês',
-        description:
-          'Bebida a base de café, uísque irlandês, açúcar e chantilly',
-        price: 9.9,
+        id: 'asidghasiudasdasghasiudaasdadsafsdsdsdas',
+        image: crazyPotato,
+        type: ['Acompanhamentos'],
+        name: 'Batata Maluca',
+        description: 'Se delicie com a melhor Batata Maluca da cidade!',
+        price: 19.9,
       },
     ]
 
@@ -231,7 +200,6 @@ export function CartCoffesContextProvider({
 
   function sendAddress(data: addressPurchese) {
     setAddressPurchese(data)
-    setCoffesOnCart([])
   }
 
   return (

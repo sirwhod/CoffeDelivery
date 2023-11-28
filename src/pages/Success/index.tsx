@@ -1,20 +1,57 @@
-import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { CurrencyDollar, MapPin, Timer, Star } from 'phosphor-react'
 import deliveryManImage from '../../assets/delivery-man.svg'
-import { Item, ItemContainer, SuccessContainer, SuccessContent } from './styles'
+import {
+  Item,
+  ItemContainer,
+  StarContainer,
+  SuccessContainer,
+  SuccessContent,
+} from './styles'
 import { useContext } from 'react'
 import { CartCoffesContext } from '../../context/CartCoffesContext'
 
 export function Success() {
-  const { addressPurchese } = useContext(CartCoffesContext)
+  const { addressPurchese, coffesOnCart } = useContext(CartCoffesContext)
 
-  console.log(addressPurchese)
   return (
     <SuccessContainer>
       <SuccessContent>
         <h1>Uhu! Pedido confirmado</h1>
-        <span>Agora é só aguardar que logo o café chegará até você</span>
+        <span>Agora é só aguardar que logo o seu pedido chegará até você!</span>
 
         <main>
+          <span>Itens comprados:</span>
+
+          {coffesOnCart.map((item) => {
+            if (item.onCart === true) {
+              return (
+                <ItemContainer key={item.coffe.id}>
+                  <Item statusColor="white">
+                    <img src={item.coffe.image} alt="" />
+                  </Item>
+                  <div>
+                    <span>{item.coffe.name}</span>
+                    <strong>{`Quantidade: ${item.quantityOnCart}`}</strong>
+                  </div>
+                </ItemContainer>
+              )
+            } else {
+              return null
+            }
+          })}
+
+          <StarContainer>
+            <span>Avalie o seu pedido:</span>
+            <div>
+              <Star weight="fill" />
+              <Star weight="fill" />
+              <Star weight="fill" />
+              <Star weight="fill" />
+              <Star weight="fill" />
+            </div>
+          </StarContainer>
+
+          <span>Dados do pedido:</span>
           <ItemContainer>
             <Item statusColor="purple">
               <MapPin weight="fill" />

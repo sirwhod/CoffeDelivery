@@ -148,7 +148,7 @@ export function Checkout() {
                 <strong>Pagamento</strong>
                 <span>
                   O pagamento é feito na entrega. Escolha a forma que deseja
-                  pagaro
+                  pagar
                 </span>
               </div>
             </HeaderContainer>
@@ -186,7 +186,7 @@ export function Checkout() {
           </FormPayment>
         </CompleteRegistration>
         <ViewOrderContent>
-          <h1>Cafés selecionados</h1>
+          <h1>Comidas selecionadas</h1>
           <main>
             <CoffesOrder>
               {coffesOnCart.map((coffe) => {

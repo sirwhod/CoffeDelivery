@@ -7,7 +7,7 @@ export const SuccessContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 
   img {
     width: 30.75rem;
@@ -60,6 +60,31 @@ export const SuccessContent = styled.div`
     ); */
     border-radius: 6px 36px;
     /* border-image-slice: 1; */
+
+    span {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.925rem;
+      line-height: 130%;
+
+      color: ${(props) => props.theme['base-subtitle']};
+      font-stretch: 100;
+    }
+  }
+`
+
+export const StarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+
+  div:hover {
+    cursor: pointer;
+    svg {
+      fill: ${(props) => props.theme.yellow};
+    }
   }
 `
 
@@ -100,6 +125,7 @@ const STATUS_COLOR = {
   yellowDark: 'yellow-dark',
   yellow: 'yellow',
   purple: 'purple',
+  white: '#fff',
 } as const
 
 interface StatusProps {
@@ -119,4 +145,8 @@ export const Item = styled.div<StatusProps>`
   background-color: ${(props) => props.theme[STATUS_COLOR[props.statusColor]]};
   border-radius: 1000px;
   color: ${(props) => props.theme.white};
+
+  img {
+    width: 40px;
+  }
 `
